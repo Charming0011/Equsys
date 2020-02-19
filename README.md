@@ -1,2 +1,2 @@
 # Equsys
-##Python3+Django2+Mysql   
+## Python3+Django2+Mysql   
