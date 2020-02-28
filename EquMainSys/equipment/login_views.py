@@ -144,9 +144,9 @@ def subadd(request):
         total = total + 1
         Stu.objects.filter(stuser=nid).update(total=total)
         messages.success(request,'提交成功！可继续提交其他机器维护记录！')
-        return redict('/submaninfo')
+        return redirect('/submaninfo')
     except Exception as e:
         ret['status']=False
         ret['error']=e
         messages.warning(request,e)
-        return redict('/submaninfo')
+        return redirect('/submaninfo')
