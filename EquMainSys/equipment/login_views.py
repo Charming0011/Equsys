@@ -124,7 +124,6 @@ def subadd(request):
     if mouse!='正常' or keyboard!='正常' or screen!='正常' or engine!='正常':
         stat=1
     try:
-
         man = Mainfo.objects.create(
             id_ma_id=equid,
             systemrun=systemrun,
@@ -144,8 +143,10 @@ def subadd(request):
         total=stu[0].total
         total = total + 1
         Stu.objects.filter(stuser=nid).update(total=total)
-        return HttpResponse('提交成功！可继续提交其他机器维护记录！')
+        messages.success(request,'提交成功！可继续提交其他机器维护记录！')
+        return redict('/submaninfo')
     except Exception as e:
         ret['status']=False
         ret['error']=e
-        return HttpResponse(str(ret))
+        messages.warning(request,e)
+        return redict('/submaninfo')

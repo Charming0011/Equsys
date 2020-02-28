@@ -148,6 +148,15 @@
                         </div>
                     </div>
     </div>
+
+{% if messages %}
+    <script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+    </script>
+{% endif %}
+
 <script>
 
     function sub() {
@@ -192,8 +201,7 @@
                     'engine': engine,
                 },
                 success: function (data) {
-                    console.log(data);
-                    alert(data);
+                   
                 }
             })
             return true;
